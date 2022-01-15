@@ -1,0 +1,60 @@
+<%- include('./partials/head', {title: 'Iniciar sesion - La Casa de la Musica' }) %>
+
+    <body>
+        <%- include('./partials/header') %>
+
+            <main>
+                <div class="forms-title-container"><div class="forms-title">INCIAR SESION</div><div class="forms-title-bar"></div></div>
+                <form class="formulario-login" action="/users/login" method="POST">
+                    <div class="primera-parte">
+                        <% if (locals.mensaje) { %>
+                            <div class="login-requerido">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <%= locals.mensaje %>
+                                    <% } %>
+                            </div>
+                            <div class="casillero">
+                                <label for="email" class="label-1">Correo electronico:</label>
+                                <input type="text" name="email"
+                                    class="input-1 <%= (locals.errors && errors.email) ? 'input-danger' : null %> email">
+                            </div>
+                            <% if (locals.errors && errors.email) { %>
+                                <div id="validation1" class="warning-text">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    <%= errors.email.msg %>
+                                </div>
+                                <% } %>
+                                <div id="errors-email" class="warning-text"></div>
+                                    <div class="casillero">
+                                        <label for="password" class="label-1">Contraseña:</label>
+                                        <input type="password" name="password"
+                                            class="input-1 <%= (locals.errors && errors.password) ? 'input-danger' : null %> password">
+                                    </div>
+                                    <% if (locals.errors && errors.password) { %>
+                                        <div id="validation2" class="warning-text">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                            <%= errors.password.msg %>
+                                        </div>
+                                        <% } %>
+                                        <div id="errors-password" class="warning-text"></div>
+                                            <div class="casillero">
+                                                <label for="remember_me" class="label-1">
+                                                    <input type="checkbox" name="remember_me"> Mantener sesion iniciada
+                                                </label>
+                                            </div>
+                                            <div class="casillero">
+                                                <button type="submit" class="boton-allproducts">Iniciar sesion</button>
+                                            </div>
+                                        </div>
+                </form>
+                <div class="pie-login">
+                    <p class="pie-crear">No tienes cuenta?<a href="/users/register"><button type="submit"
+                                class="boton-allproducts" style="width: 100px;">CREAR</button></a></p>
+                </div>
+
+            </main>
+            <%- include('./partials/footer') %>
+                <script type="text/javascript" src="/js/loginForm.js"></script>
+    </body>
+
+    </html>

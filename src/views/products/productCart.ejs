@@ -1,0 +1,38 @@
+<%- include('./partials/head', {title: 'Carrito de compras - La Casa de la Musica'}) %>
+
+<body>
+    <%- include('./partials/header') %>
+
+    <main>
+        
+        <div class="carrito-de-compras">
+            <div class="titulo-carro-compras">
+                <div class="forms-title-container"><div class="forms-title">CARRITO DE COMPRAS</div><div class="forms-title-bar"></div></div>            </div>
+            <%- include('./partials/cartItem') %>
+            <%- include('./partials/cartItem') %>
+            <%- include('./partials/cartItem') %>
+            <div class="suma-compra">
+                <div class="subtotal">
+                    <p>SUBTOTAL: </p>
+                    <p>$0.00</p>
+                </div>
+                <div class="envio">
+                    <p>COSTO DE ENVIO: </p>
+                    <p>$0.00</p>
+                </div>
+            </div>
+            <div class="suma-compra">
+                <div class="subtotal">
+                    <p>TOTAL: </p>
+                    <p>$0.00</p>
+                </div>
+            </div>
+
+
+        </div>
+
+    </main>
+    <%- include('./partials/footer') %>
+</body>
+
+</html>

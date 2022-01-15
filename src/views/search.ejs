@@ -1,0 +1,28 @@
+<%- include('./partials/head', {title: 'Resultados de busqueda - La Casa de la Musica'}) %>
+
+<body>
+    <%- include('./partials/header') %>
+
+    <main>
+        <div class="index-title-container"><div class="index-title">RESULTADOS DE TU BUSQUEDA</div><div class="index-title-bar"></div></div>
+        <div class="input-pagina-busqueda">
+        <div class="casillero">
+        <form action="/search" method="GET">
+            <input type="text" name="search" class="search-input" placeholder=" Busca lo que necesites...">
+        </form>
+        </div>
+        </div>
+        <section class="contenedor-articulos">
+            <% if (results != '') { %>
+            <!-- PRODUCTOS PRINCIPALES INDEX-->
+            <% results.forEach((product) => { %>
+                    <%- include('./partials/productCard', {product : product}) %>
+			<% }) %>
+            <% } else { %>
+                <p class="mensaje-busqueda">No se encontraron resultados para tu busqueda. Proba realizando una nueva. </p>
+            <% } %>    
+            </section>
+    </main>
+    <%- include('./partials/footer') %>
+  </body>
+</html>

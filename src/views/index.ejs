@@ -1,0 +1,46 @@
+<%- include('./partials/head', {title: 'La Casa de la Musica'}) %>
+
+<body>
+    <%- include('./partials/header') %>
+
+    <main>
+        <div class="carousel-fotos" align="center">
+            <div><img class="imagen-carousel" src="/images/instrumentos-1.jpg" alt=""></div>
+            <div><img class="imagen-carousel" src="/images/instrumentos-2.jpg" alt=""></div>
+            <div><img class="imagen-carousel" src="/images/instrumentos-3.jpg" alt=""></div>
+        </div>
+        <div class="index-title-container"><div class="index-title">NUEVOS PRODUCTOS</div><div class="index-title-bar"></div></div>
+        <section class="contenedor-articulos">
+            <!-- PRODUCTOS PRINCIPALES INDEX-->
+            <% top.forEach((product) => { %>
+                    <%- include('./partials/productCard', {product : product}) %>
+			<% }) %>            
+        </section>
+        <div class="index-title-container"><div class="index-title">OFERTAS DESTACADAS</div><div class="index-title-bar"></div></div>
+        <section class="contenedor-articulos">
+            <!-- PRODUCTOS SECCION INFERIOR-->
+            <% bottom.forEach((product) => { %>
+                    <%- include('./partials/productCard', {product : product}) %>
+			<% }) %>  
+        </section>
+
+        <form action="/products" method="GET" class="form-boton-allproducts">
+            <button type="submit" class="boton-allproducts">VER TODOS LOS PRODUCTOS</button>
+        </form>
+    </main>
+    <%- include('./partials/footer') %>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="/js/slick/slick/slick.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.carousel-fotos').slick({
+                autoplay: true,
+            });
+
+        });
+    </script>
+</body>
+
+</html>

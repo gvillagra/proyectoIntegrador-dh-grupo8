@@ -1,0 +1,235 @@
+<%- include('./partials/head', {title: 'Editar producto - La Casa de la Musica' }) %>
+
+    <body>
+        <%- include('./partials/header') %>
+            <main>
+                <div class="forms-title-container"><div class="forms-title">EDITAR PRODUCTO</div><div class="forms-title-bar"></div></div>
+
+                <form action="/products/<%= product.id %>?_method=PUT" method="POST" class="formulario-login"
+                    enctype="multipart/form-data">
+                    <div class="primera-parte">
+                        <div class="casillero">
+                            <label for="name" class="label-1">Nombre del producto:</label>
+                            <input type="text" name="name" value="<%= locals.oldData ? oldData.name : product.name %>"
+                                class="input-1 <%= (locals.errors && errors.name) ? 'input-danger' : null %> name">
+                                <div id="errors-name" class="warning-text"></div>
+                            <% if (locals.errors && errors.name) { %>
+                                <div id="validation1" class="warning-text">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    <%= errors.name.msg %>
+                                </div>
+                                <% } %>
+                        </div>
+                        <div class="casillero">
+                            <label for="price" class="label-1">Precio del producto:</label>
+                            <input type="text" name="price"
+                                value="<%= locals.oldData ? oldData.price : product.price %>"
+                                class="input-1 <%= (locals.errors && errors.price) ? 'input-danger' : null %> price">
+                                <div id="errors-price" class="warning-text"></div>
+                            <% if (locals.errors && errors.price) { %>
+                                <div id="validation2" class="warning-text">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    <%= errors.price.msg %>
+                                </div>
+                                <% } %>
+                        </div>
+                        <div class="casillero">
+                            <label for="sku" class="label-1">SKU:</label>
+                            <input type="number" name="sku" value="<%= locals.oldData ? oldData.sku : product.sku %>"
+                                class="input-1 <%= (locals.errors && errors.sku) ? 'input-danger' : null %> sku">
+                                <div id="errors-sku" class="warning-text"></div>
+                            <% if (locals.errors && errors.sku) { %>
+                                <div id="validation3" class="warning-text">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    <%= errors.sku.msg %>
+                                </div>
+                                <% } %>
+                        </div>
+                        <div class="casillero">
+                            <label for="stock" class="label-1">Stock:</label>
+                            <input type="number" name="stock"
+                                value="<%= locals.oldData ? oldData.stock : product.stock %>"
+                                class="input-1 <%= (locals.errors && errors.stock) ? 'input-danger' : null %> stock">
+                                <div id="errors-stock" class="warning-text"></div>
+                            <% if (locals.errors && errors.stock) { %>
+                                <div id="validation4" class="warning-text">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    <%= errors.stock.msg %>
+                                </div>
+                                <% } %>
+                        </div>
+                    </div>
+                    <div class="casillero">
+                        <label for="classification" class="label-1">Clasificacion:</label>
+                        <select name="classification" id="classification"
+                            class="input-select <%= (locals.errors && errors.classification) ? 'input-danger' : null %> classification">
+                            <option value=""></option>
+                            <option value="main-top" <%=(locals.oldData && oldData.classification==='main-top' ) ||
+                                product.classification=='main-top' ? 'selected' : ' ' %>>Nuevos Productos</option>
+                            <option value="main-bottom" <%=(locals.oldData && oldData.classification==='main-bottom' )
+                                || product.classification=='main-bottom' ? 'selected' : ' ' %>>Ofertas Destacadas
+                            </option>
+                        </select>
+                        <div id="errors-classification" class="warning-text"></div>
+                        <% if (locals.errors && errors.classification) { %>
+                            <div id="validation5" class="warning-text">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <%= errors.classification.msg %>
+                            </div>
+                            <% } %>
+                    </div>
+                    <div class="casillero">
+                        <label for="category_id" class="label-1">Categoria:</label>
+                        <select name="category_id" id="category_id"
+                            class="input-select <%= (locals.errors && errors.category_id) ? 'input-danger' : null %> category">
+
+                            <% if (locals.categories) { %>
+                                <option></option>
+                                <% if (locals.oldData && oldData.category_id) { %>
+                                <% for (let i=0; i < categories.length; i++) { %>
+                                        <option value="<%=categories[i].category_id%>" <%=  oldData.category_id ==categories[i].category_id ? 'selected' : '' %>>
+                                        <%=categories[i].name %>
+                                        </option>
+                                <% }} else { %>
+                                    <% for (let i=0; i <categories.length; i++) { %>
+                                        <option value="<%=categories[i].category_id%>" <%=  product.category_id ==categories[i].category_id ? 'selected' : '' %>>
+                                        <%=categories[i].name %>
+                                        </option>
+                                    <% } %>
+                                    <% } %>
+                                    <% } %>
+
+                        </select>
+                        <div id="errors-category" class="warning-text"></div>
+                        <% if (locals.errors && errors.category_id) { %>
+                            <div id="validation6" class="warning-text">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <%= errors.category_id.msg %>
+                            </div>
+                            <% } %>
+
+
+                    </div>
+
+
+                    <div class="casillero">
+                        <label for="brand_id" class="label-1">Marca:</label>
+                        <select name="brand_id" id="brand_id"
+                            class="input-select <%= (locals.errors && errors.brand_id) ? 'input-danger' : null %> brand">
+
+                            <% if (locals.brands) { %>
+                                <option></option>
+                                <% if (locals.oldData && oldData.brand_id) { %>
+                                <% for (let i=0; i < brands.length; i++) { %>
+                                        <option value="<%=brands[i].brand_id%>" <%=  oldData.brand_id == brands[i].brand_id ? 'selected' : '' %>>
+                                        <%= brands[i].name %>
+                                        </option>
+                                <% }} else { %>
+                                    <% for (let i=0; i < brands.length; i++) { %>
+                                        <option value="<%=brands[i].brand_id%>" <%=  product.brand_id == brands[i].brand_id ? 'selected' : '' %>>
+                                        <%= brands[i].name %>
+                                        </option>
+                                    <% } %>
+                                    <% } %>
+                                    <% } %>
+                           
+                                       
+                        </select>
+                    
+                    
+                        <div id="errors-brand" class="warning-text"></div>
+                        <% if (locals.errors && errors.brand_id) { %>
+                            <div id="validation7" class="warning-text">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <%= errors.brand_id.msg %>
+                            </div>
+                            <% } %>
+
+
+                    </div>
+
+
+
+
+
+                    <div class="casillero">
+                        <label for="type" class="label-1">Tipo de producto:</label>
+                        <input type="text" name="type" value="<%= locals.oldData ? oldData.type : product.type %>"
+                            class="input-1 <%= (locals.errors && errors.type) ? 'input-danger' : null %> type">
+                            <div id="errors-type" class="warning-text"></div>
+                        <% if (locals.errors && errors.type) { %>
+                            <div id="validation8" class="warning-text">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <%= errors.type.msg %>
+                            </div>
+                            <% } %>
+                    </div>
+                    <div class="casillero">
+                        <label for="description" class="label-1">Descipción:</label>
+                        <textarea name="description" id="description"
+                            class="input-textarea <%= (locals.errors && errors.description) ? 'input-danger' : null %> description"><%= locals.oldData ? oldData.description : product.description%></textarea>
+                            <div id="errors-description" class="warning-text"></div>
+                            <% if (locals.errors && errors.description) { %>
+                            <div id="validation9" class="warning-text">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <%= errors.description.msg %>
+                            </div>
+                            <% } %>
+                    </div>
+
+        
+                               
+                                <div class="casillero">
+                    
+                                    <label class="label-1">Imagen:</label>
+                                    <div class="div-avatar-edit"><img class="avatar-edit" src="/images/products/<%= product.image %>" alt=""></div>
+                                    <label for="profileimage" class="label-profile-image"><i class="fas fa-upload"></i><p class="toShow"></p></label>
+                                    <input type="file" name="profileimage" id="profileimage"
+                                        class="input-file <%= (locals.errors && errors.image1) ? 'input-danger' : null %> image">
+                                </div>
+                               
+                               
+                               
+                                <div id="errors-image" class="warning-text"></div>
+                            <% if (locals.errors && errors.image1) { %>
+                                <div id="validation10" class="warning-text">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    <%= errors.image1.msg %>
+                                </div>
+                                <% } %>
+                        </div>
+
+                    </div>
+                    <div class="casillero">
+                        <button type="submit" class="boton-allproducts" style="width: 200px; align-self: center;">EDITAR PRODUCTO</button>
+                    </div>
+                </form>
+                <div class="casillero">
+                    <form action="/products/<%= product.id %>?_method=DELETE" method="POST"
+                        class="form-boton-allproducts">
+                        <button type="submit" class="boton-delete">ELIMINAR PRODUCTO</button>
+                    </form>
+                </div>
+            </main>
+
+
+
+
+
+
+            <%- include('./partials/footer') %>
+            <script type="text/javascript" src="/js/editProductForm.js"></script>
+            <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    $('input[type="file"]').change(function(e){
+                        var fileName = e.target.files[0].name;
+                        let inputToShow = document.querySelector('input.image')
+                        let toShow = document.querySelector('.toShow')
+                        toShow.innerHTML = fileName
+                    });
+                });
+            </script>
+    </body>
+
+    </html>

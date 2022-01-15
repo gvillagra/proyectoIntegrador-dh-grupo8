@@ -1,0 +1,81 @@
+<%- include('./partials/head', {title: 'Detalle de producto - La Casa de la Musica' }) %>
+
+    <body>
+        <%- include('./partials/header') %>
+
+            <main>
+                <div class="index-title-container">
+                    <div class="index-title">DETALLE DE PRODUCTO</div>
+                    <div class="index-title-bar"></div>
+                </div>
+                <div class="detalle-articulo-nuevo">
+                    <div class="detalle-articulo-nuevo-izq">
+                        <img src="/images/products/<%= product.image %>" alt="" class="imagen-detalle-nuevo">
+                    </div>
+                    <div class="detalle-articulo-nuevo-cen">
+                        <p class="clasificacion-productos-nuevo"><a href="#">CATEGORIAS</a> > <a href="#">
+                                <%= product.categories.name.toUpperCase() %>
+                            </a> > <a href="#">
+                                <%= product.brands.name.toUpperCase() %>
+                            </a> > <a href="#">
+                                <%= product.name.toUpperCase() %>
+                            </a></p>
+                        <p class="producto-nombre-nuevo">
+                            <%= product.name.toUpperCase() %>
+                                <%= product.brands.name.toUpperCase() %>
+                        </p>
+                        <p class="sku-producto-nuevo">SKU #: <%= product.sku %>
+                        </p>
+                        <div class="division-producto-nuevo"></div>
+                        <div class="features-detalle-producto">
+                            <p class="feature-item"><i class="fas fa-circle circulo-prod-nuevo"></i>Categoria: <%=
+                                    product.categories.name.toUpperCase() %>
+                            </p>
+                            <p class="feature-item"><i class="fas fa-circle circulo-prod-nuevo"></i>Tipo: <%=
+                                    product.type.toUpperCase() %>
+                            </p>
+                            <p class="feature-item"><i class="fas fa-circle circulo-prod-nuevo"></i>Marca: <%=
+                                    product.brands.name.toUpperCase() %>
+                            </p>
+                            <p class="feature-item"><i class="fas fa-circle circulo-prod-nuevo"></i>Stock: <%=
+                                    product.stock %>
+                            </p>
+                            <p class="feature-item description"><i
+                                    class="fas fa-circle circulo-prod-nuevo"></i>Descripcion: <%= product.description %>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="div-a-ocultarse-desktop"></div>
+                    <div class="detalle-articulo-nuevo-der">
+                        <div class="der-top">
+                        <p class="feature-item description-der"><i
+                            class="fas fa-undo-alt icono-der"></i>Devolución gratis. Tenés 30 días desde que lo recibís.
+                        </p>
+                        <p class="feature-item description-der"><i
+                            class="fas fa-shield-alt icono-der"></i>Compra Protegida. Recibí el producto que esperabas o te devolvemos tu dinero.
+                        </p>
+                        <p class="feature-item description-der"><i
+                            class="fas fa-medal icono-der"></i>12 meses de garantía de fábrica.
+                        </p>
+                        <p class="feature-item description-der"><i
+                            class="fas fa-shipping-fast icono-der"></i>Envío gratis a todo el país
+                        </p>
+                        </div>
+                        <div class="der-bottom">
+                        <div class="articulo-precio-nuevo">$<%= product.price %></div>
+                        <div class="botones-der">
+                            <button class="boton-allproducts-nuevo"><a href="/cart">COMPRAR</a></button>
+                            <% if (locals.isLogged) { %>
+                                <button class="boton-allproducts-nuevo"><a href="/products/<%= product.id %>/edit">EDITAR</a></button>
+                            <% } %>
+                            <button class="articulo-boton-carro-nuevo"><a href="/cart"><i id="iconos-barra" class="fas fa-shopping-cart"></i></a></button>
+                            
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <%- include('./partials/footer') %>
+    </body>
+
+    </html>

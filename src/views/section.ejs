@@ -1,0 +1,16 @@
+<%- include('./partials/head', {title: 'Seccion - La Casa de la Musica'}) %>
+
+<body>
+    <%- include('./partials/header') %>
+
+    <main>
+      <div class="index-title-container"><div class="index-title">SECCION DE PRODUCTOS</div><div class="index-title-bar"></div></div>
+        <section class="contenedor-articulos">
+            <% results.forEach((product) => { %>
+                    <%- include('./partials/productCard', {product : product}) %>
+		      	<% }) %>
+            </section>
+    </main>
+    <%- include('./partials/footer') %>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+<%- include('./partials/head', {title: 'Crea tu cuenta - La Casa de la Musica' }) %>
+
+    <body>
+        <%- include('./partials/header') %>
+
+            <main>
+                <div class="forms-title-container"><div class="forms-title">CREA TU CUENTA</div><div class="forms-title-bar"></div></div>
+                <form class="formulario-login" action="/users/register/" method="POST" enctype="multipart/form-data">
+                    <div class="primera-parte">
+                        <div class="casillero">
+                            <label for="first_name" class="label-1">Nombre:</label>
+                            <input type="text" name="first_name" value="<%= locals.oldData ? oldData.first_name : ''%>"
+                                class="input-1 <%= (locals.errors && errors.first_name) ? 'input-danger' : null %> first-name">
+                        </div>
+                        <div id="errors-first-name" class="warning-text"></div>
+                        <% if (locals.errors && errors.first_name) { %>
+                            <div id="validation1" class="warning-text">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <%= errors.first_name.msg %>
+                            </div>
+                            <% } %>
+
+                                <div class="casillero">
+                                    <label for="last_name" class="label-1">Apellido:</label>
+                                    <input type="text" name="last_name"
+                                        value="<%= locals.oldData ? oldData.last_name : ''%>"
+                                        class="input-1  <%= (locals.errors && errors.last_name) ? 'input-danger' : null %> last-name">
+                                </div>
+                                <div id="errors-last-name" class="warning-text"></div>
+                                <% if (locals.errors && errors.last_name) { %>
+                                    <div id="validation2" class="warning-text">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <%= errors.last_name.msg %>
+                                    </div>
+                                    <% } %>
+
+                                        <div class="casillero">
+                                            <label for="address" class="label-1">Direccion:</label>
+                                            <input type="text" name="address"
+                                                value="<%= locals.oldData ? oldData.address : ''%>"
+                                                class="input-1 <%= (locals.errors && errors.address) ? 'input-danger' : null %> address">
+                                        </div>
+                                        <div id="errors-address" class="warning-text"></div>
+                                        <% if (locals.errors && errors.address) { %>
+                                            <div id="validation3" class="warning-text">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <%= errors.address.msg %>
+                                            </div>
+                                            <% } %>
+
+                                                <div class="casillero">
+                                                    <label for="city" class="label-1">Ciudad:</label>
+                                                    <input type="text" name="city" id="city"
+                                                        value="<%= locals.oldData ? oldData.city : ''%>"
+                                                        class="input-1  <%= (locals.errors && errors.city) ? 'input-danger' : null %> city">
+                                                </div>
+                                                <div id="errors-city" class="warning-text"></div>
+                                                    <% if (locals.errors && errors.city) { %>
+                                                        <div id="validation4" class="warning-text">
+                                                            <i class="fas fa-exclamation-circle"></i>
+                                                            <%= errors.city.msg %>
+                                                        </div>
+                                                        <% } %>
+                                                        
+                                                <div class="casillero">
+                                                    <label for="zip" class="label-1">Codigo Postal:</label>
+                                                    <input type="number" name="zip" id="zip"
+                                                        value="<%= locals.oldData ? oldData.zip : ''%>"
+                                                        class="input-1 <%= (locals.errors && errors.zip) ? 'input-danger' : null %> zip">
+                                                </div>
+                                                <div id="errors-zip" class="warning-text"></div>
+                                                    <% if (locals.errors && errors.zip) { %>
+                                                        <div id="validation5" class="warning-text">
+                                                            <i class="fas fa-exclamation-circle"></i>
+                                                            <%= errors.zip.msg %>
+                                                        </div>
+                                                        <% } %>
+                                                <div class="casillero">
+                                                    <label for="email" class="label-1">Correo electronico:</label>
+                                                    <input type="text" name="email" id="email" value="<%= locals.oldData ? oldData.email : ''%>"
+                                                        class="input-1 <%= (locals.errors && errors.email) ? 'input-danger' : null %> email">
+                                                </div>
+                                                <div id="errors-email" class="warning-text"></div>
+                                                    <% if (locals.errors && errors.email) { %>
+                                                        <div id="validation6" class="warning-text">
+                                                            <i class="fas fa-exclamation-circle"></i>
+                                                            <%= errors.email.msg %>
+                                                        </div>
+                                                        <% } %>
+                                                <div class="casillero">
+                                                    <label for="password" class="label-1">Contraseña:</label>
+                                                    <input type="password" name="password" id="password"
+                                                        class="input-1 <%= (locals.errors && errors.password) ? 'input-danger' : null %> password">
+                                                </div>
+                                                <div id="errors-password" class="warning-text"></div>
+                                                    <% if (locals.errors && errors.password) { %>
+                                                        <div id="validation7" class="warning-text">
+                                                            <i class="fas fa-exclamation-circle"></i>
+                                                            <%= errors.password.msg %>
+                                                        </div>
+                                                        <% } %>
+                                                <div class="casillero">
+                                                    <label class="label-1">Foto de perfil:</label>
+                                                    <label for="profileimage" class="label-profile-image"><i class="fas fa-upload"></i><p class="toShow"></p></label>
+                                                    <input type="file" name="profileimage" id="profileimage"
+                                                        class="input-file <%= (locals.errors && errors.image1) ? 'input-danger' : null %> image">
+                                                </div>
+                                                <div id="errors-image" class="warning-text"></div>
+                                                    <% if (locals.errors && errors.image1) { %>
+                                                        <div id="validation8" class="warning-text">
+                                                            <i class="fas fa-exclamation-circle"></i>
+                                                            <%= errors.image1.msg %>
+                                                        </div>
+                                                        <% } %>
+                                                        <div class="casillero">
+                                                            <button type="submit" class="boton-allproducts">CREAR CUENTA</button>
+                                                        </div>
+                    </div>
+                    
+
+                        
+                </form>
+                <div class="pie-login">
+                    <p class="pie-crear">Ya tienes cuenta? <a href="/users/login" class="boton-allproducts">INCIAR
+                            SESION</a></p>
+                </div>
+
+
+
+
+
+            </main>
+            <%- include('./partials/footer') %>
+          
+                <script type="text/javascript" src="/js/registerForm.js"></script>
+                <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('input[type="file"]').change(function(e){
+                    var fileName = e.target.files[0].name;
+                    let inputToShow = document.querySelector('input.image')
+                    let toShow = document.querySelector('.toShow')
+                    toShow.innerHTML = fileName
+                });
+            });
+        </script>
+                
+    </body>
+
+    </html>

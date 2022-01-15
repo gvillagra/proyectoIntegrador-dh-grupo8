@@ -1,4 +1,4 @@
-# grupodh8-grupo_8_LaCasaDeLaMusica
+# proyectoIntegrador-dh-grupo8 (backup)
 PROYECTO INTEGRADOR CURSO FULL STACK DEVELOPER - DIGITAL HOUSE - GRUPO 8
 
 PROYECTO EN HEROKU
